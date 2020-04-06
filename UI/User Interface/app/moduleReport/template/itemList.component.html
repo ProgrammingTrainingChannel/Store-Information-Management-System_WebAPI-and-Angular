@@ -1,0 +1,96 @@
+﻿<style>
+    .backgroundColor {
+        background-color:red;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-6">
+                            <div class="form-group">
+                                <label>Entry Date:</label>
+                                <input type="date" class="form-control" name="EntryDate" placeholder="Entry Date" [(ngModel)]="EntryDateFrom" />
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-md-6">
+                            <div class="form-group">
+                                <label>Entry Date:</label>
+                                <input type="date" class="form-control" name="EntryDate" placeholder="Entry Date" [(ngModel)]="EntryDateTo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-2 col-md-6">
+                            <div class="form-group">
+                                <label>Issue Date:</label>
+                                <input type="date" class="form-control" name="IssueDate" placeholder="Issue Date" [(ngModel)]="IssueDateFrom" />
+                            </div>
+                        </div>
+                        <div class="col-xs-2 col-md-6">
+                            <div class="form-group">
+                                <label>Issue Date:</label>
+                                <input type="date" class="form-control" name="IssueDate" placeholder="Issue Date" [(ngModel)]="IssueDateTo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-6 pull-right">
+                            <div class="box-tools pull-right">
+                                <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="LoadItemList()" translate="Filter Transaction">
+                                    <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Filter Transaction"> Filter Transaction </i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Item List Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Program</th>
+                            <th>Location</th>
+                            <th>StockNumber</th>
+                            <th>Measurement Unit</th>
+                            <th>Balance Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let itemList of ListOfItemLists'>
+                            <td>{{itemList.Code}}</td>
+                            <td>{{itemList.Name}}</td>
+                            <td>{{itemList.Description}}</td>
+                            <td>{{itemList.Program}}</td>
+                            <td>{{itemList.Location}}</td>
+                            <td>{{itemList.StockNumber}}</td>
+                            <td>{{itemList.MeasurementUnitName}}</td>
+                            <td [ngClass]="{'backgroundColor': itemList.BalanceQuantity < 10}" class="backgroundColor" >{{itemList.BalanceQuantity}}</td>
+                        </tr>
+                        <tr *ngIf="!ListOfItemLists || ListOfItemLists.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

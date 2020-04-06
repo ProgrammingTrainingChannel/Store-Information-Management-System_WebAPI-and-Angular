@@ -1,0 +1,171 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title"> Asset Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Asset Description:</label>
+                            <input type="text" class="form-control" name="AssetDescription" placeholder="Asset Description" [(ngModel)]="asset.AssetDescription" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Marque:</label>
+                            <input type="text" class="form-control" name="Marque" placeholder="Marque" [(ngModel)]="asset.Marque" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Model:</label>
+                            <input type="text" class="form-control" name="Model" placeholder="Model" [(ngModel)]="asset.Model" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Serial Number:</label>
+                            <input type="text" class="form-control" name="SerialNumber" placeholder="Serial Number" [(ngModel)]="asset.SerialNumber" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Asset Code:</label>
+                            <input type="text" class="form-control" name="AssetCode" placeholder="Asset Code" [(ngModel)]="asset.AssetCode" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Quantity:</label>
+                            <input type="number" class="form-control" name="Quantity" placeholder="Quantity" [(ngModel)]="asset.Quantity" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Assigned Location:</label>
+                            <input type="text" class="form-control" name="AssignedLocation" placeholder="Assigned Location" [(ngModel)]="asset.AssignedLocation" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Deployed To:</label>
+                            <input type="text" class="form-control" name="DeployedTo" placeholder="Deployed To" [(ngModel)]="asset.DeployedTo" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Responsible Party:</label>
+                            <input type="text" class="form-control" name="ResponsibleParty" placeholder="Responsible Party" [(ngModel)]="asset.ResponsibleParty" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Current Condition:</label>
+                            <input type="text" class="form-control" name="CurrentCondition" placeholder="Current Condition" [(ngModel)]="asset.CurrentCondition" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Country Of Make:</label>
+                            <input type="text" class="form-control" name="CountryOfMake" placeholder="Country Of Make" [(ngModel)]="asset.CountryOfMake" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Date Of Purchase:</label>
+                            <input type="date" class="form-control" name="DateOfPurchase" placeholder="Date Of Purchase" [(ngModel)]="asset.DateOfPurchase" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Estimated Cost:</label>
+                            <input type="number" class="form-control" name="EstimatedCost" placeholder="Estimated Cost" [(ngModel)]="asset.EstimatedCost" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Insurance Start Date:</label>
+                            <input type="date" class="form-control" name="InsuranceStartDate" placeholder="Insurance Start Date" [(ngModel)]="asset.InsuranceStartDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Insurance End Date:</label>
+                            <input type="date" class="form-control" name="InsuranceEndDate" placeholder="Insurance End Date" [(ngModel)]="asset.InsuranceEndDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Insurance Type:</label>
+                            <input type="text" class="form-control" name="InsuranceType" placeholder="Insurance Type" [(ngModel)]="asset.InsuranceType" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateAsset()" translate="Save Asset">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Asset"> Save Asset </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Asset Description</th>
+                            <th>Marque</th>
+                            <th>Model</th>
+                            <th>Serial Number</th>
+                            <th>Quantity</th>
+                            <th>Assigned Location</th>
+                            <th>Responsible Party</th>
+                            <th>Estimated Cost</th>
+                            <th>Insurance End Date</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let asset of ListOfAssets'>
+                            <td>{{asset.AssetDescription}}</td>
+                            <td>{{asset.Marque}}</td>
+                            <td>{{asset.Model}}</td>
+                            <td>{{asset.SerialNumber}}</td>
+                            <td>{{asset.Quantity}}</td>
+                            <td>{{asset.AssignedLocation}}</td>
+                            <td>{{asset.ResponsibleParty}}</td>
+                            <td>{{asset.EstimatedCost}}</td>
+                            <td>{{asset.InsuranceEndDate}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleAsset(asset)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteAsset(asset)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfAssets || ListOfAssets.length==0">
+                            <td colspan="11">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

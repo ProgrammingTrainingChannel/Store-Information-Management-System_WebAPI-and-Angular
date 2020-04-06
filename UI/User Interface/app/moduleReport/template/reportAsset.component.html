@@ -1,0 +1,56 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Entry Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Asset Description</th>
+                            <th>Marque</th>
+                            <th>Model</th>
+                            <th>Serial Number</th>
+                            <th>Quantity</th>
+                            <th>Assigned Location</th>
+                            <th>Responsible Party</th>
+                            <th>Estimated Cost</th>
+                            <th>Insurance End Date</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let asset of ListOfAssets'>
+                            <td>{{asset.AssetDescription}}</td>
+                            <td>{{asset.Marque}}</td>
+                            <td>{{asset.Model}}</td>
+                            <td>{{asset.SerialNumber}}</td>
+                            <td>{{asset.Quantity}}</td>
+                            <td>{{asset.AssignedLocation}}</td>
+                            <td>{{asset.ResponsibleParty}}</td>
+                            <td>{{asset.EstimatedCost}}</td>
+                            <td>{{asset.InsuranceEndDate}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleAsset(asset)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteAsset(asset)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfAssets || ListOfAssets.length==0">
+                            <td colspan="11">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

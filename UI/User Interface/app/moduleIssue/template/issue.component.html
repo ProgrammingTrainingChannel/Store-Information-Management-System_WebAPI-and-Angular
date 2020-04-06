@@ -1,0 +1,207 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Issue Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Issued By:</label>
+                            <input type="text" class="form-control" name="IssuedBy" placeholder="Issued By" [(ngModel)]="issue.IssuedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Issued Date:</label>
+                            <input type="date" class="form-control" name="IssuedDate" placeholder="Issued Date" [(ngModel)]="issue.IssuedDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Recieved By:</label>
+                            <input type="text" class="form-control" name="RecievedBy" placeholder="Recieved By" [(ngModel)]="issue.RecievedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Recieved Date:</label>
+                            <input type="date" class="form-control" name="RecievedDate" placeholder="Recieved Date" [(ngModel)]="issue.RecievedDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Issued By:</label>
+                            <input type="text" class="form-control" name="IssuedBy" placeholder="Issued By" [(ngModel)]="issue.IssuedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Issued Date:</label>
+                            <input type="date" class="form-control" name="IssuedDate" placeholder="Issued Date" [(ngModel)]="issue.IssuedDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="issue.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateIssue()" translate="Save Issue">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Issue"> Save Issue </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Issued By</th>
+                            <th>Issued Date</th>
+                            <th>Recieved By</th>
+                            <th>Recieved Date</th>
+                            <th>Remark</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let issue of ListOfIssues'>
+                            <td>{{issue.IssuedBy}}</td>
+                            <td>{{issue.IssuedDate}}</td>
+                            <td>{{issue.RecievedBy}}</td>
+                            <td>{{issue.RecievedDate}}</td>
+                            <td>{{issue.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSingleIssue(issue)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleIssue(issue)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteIssue(issue)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfIssues || ListOfIssues.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Issue Detail Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <label>Item</label>
+                        <select id="ListOfItems" class="form-control" [(ngModel)]="SelectedItemID" required>
+                            <option *ngFor="let item of ListOfItems" value={{item.ID}}>
+                                {{item.Name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Quantity:</label>
+                            <input type="number" class="form-control" name="Quantity" placeholder="Quantity" [(ngModel)]="issueDetail.Quantity" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Unit Price:</label>
+                            <input type="number" class="form-control" name="UnitPrice" placeholder="Unit Price" [(ngModel)]="issueDetail.UnitPrice" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Total Price:</label>
+                            <input type="number" class="form-control" name="TotalPrice" disabled placeholder="Total Price" [(ngModel)]="issueDetail.Quantity * issueDetail.UnitPrice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="issueDetail.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateIssueDetail()" translate="Save Issue Detail">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Issue Detail"> Save Issue Detail </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th>Remark</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let issueDetail of ListOfIssueDetails'>
+                            <td>{{issueDetail.Item.Name}}</td>
+                            <td>{{issueDetail.Quantity}}</td>
+                            <td>{{issueDetail.UnitPrice}}</td>
+                            <td>{{issueDetail.TotalPrice}}</td>
+                            <td>{{issueDetail.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleIssueDetail(issueDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteIssueDetail(issueDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfIssueDetails || ListOfIssueDetails.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

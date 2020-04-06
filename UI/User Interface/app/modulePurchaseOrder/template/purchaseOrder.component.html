@@ -1,0 +1,207 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Purchase Order Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label>Request From:</label>
+                            <input type="text" class="form-control" name="RequestFrom" placeholder="Request From" [(ngModel)]="purchaseOrder.RequestFrom" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label>Purpose of Request:</label>
+                            <input type="text" class="form-control" name="PurposeOfRequest" placeholder="Purpose of Request" [(ngModel)]="purchaseOrder.PurposeOfRequest" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Requested By:</label>
+                            <input type="text" class="form-control" name="RequestedBy" placeholder="Requested By" [(ngModel)]="purchaseOrder.RequestedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Requested Date:</label>
+                            <input type="date" class="form-control" name="RequestedDate" placeholder="Requested Date" [(ngModel)]="purchaseOrder.RequestedDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Authorized By:</label>
+                            <input type="text" class="form-control" name="AuthorizedBy" placeholder="Authorized By" [(ngModel)]="purchaseOrder.AuthorizedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Authorized Date:</label>
+                            <input type="date" class="form-control" name="AuthorizedDate" placeholder="Authorized Date" [(ngModel)]="purchaseOrder.AuthorizedDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="purchaseOrder.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdatePurchaseOrder()" translate="Save Purchase Order">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Purchase Order"> Save Purchase Order </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Request From</th>
+                            <th>Requested By</th>
+                            <th>Requested Date</th>
+                            <th>Remark</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let purchaseOrder of ListOfPurchaseOrders'>
+                            <td>{{purchaseOrder.RequestFrom}}</td>
+                            <td>{{purchaseOrder.RequestedBy}}</td>
+                            <td>{{purchaseOrder.RequestedDate}}</td>
+                            <td>{{purchaseOrder.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSinglePurchaseOrder(purchaseOrder)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSinglePurchaseOrder(purchaseOrder)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeletePurchaseOrder(purchaseOrder)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfPurchaseOrders || ListOfPurchaseOrders.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Purchase Order Detail Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <label>Item</label>
+                        <select id="ListOfItems" class="form-control" [(ngModel)]="SelectedItemID" required>
+                            <option *ngFor="let item of ListOfItems" value={{item.ID}}>
+                                {{item.Name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Program:</label>
+                            <input type="text" class="form-control" name="Program" placeholder="Program" [(ngModel)]="purchaseOrderDetail.Program" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Quantity Requested:</label>
+                            <input type="number" class="form-control" name="QuantityRequested" placeholder="Quantity Requested" [(ngModel)]="purchaseOrderDetail.QuantityRequested" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Quantity Approved:</label>
+                            <input type="number" class="form-control" name="QuantityApproved" placeholder="Quantity Approved" [(ngModel)]="purchaseOrderDetail.QuantityApproved" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="purchaseOrderDetail.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdatePurchaseOrderDetail()" translate="Save Purchase Order Detail">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Purchase Order Detail"> Save Purchase Order Detail </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Program</th>
+                            <th>Quantity Requested</th>
+                            <th>Quantity Approved</th>
+                            <th>Remark</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let purchaseOrderDetail of ListOfPurchaseOrderDetails'>
+                            <td>{{purchaseOrderDetail.Item.Name}}</td>
+                            <td>{{purchaseOrderDetail.Program}}</td>
+                            <td>{{purchaseOrderDetail.QuantityRequested}}</td>
+                            <td>{{purchaseOrderDetail.QuantityApproved}}</td>
+                            <td>{{purchaseOrderDetail.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSinglePurchaseOrderDetail(purchaseOrderDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeletePurchaseOrderDetail(purchaseOrderDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfPurchaseOrderDetails || ListOfPurchaseOrderDetails.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

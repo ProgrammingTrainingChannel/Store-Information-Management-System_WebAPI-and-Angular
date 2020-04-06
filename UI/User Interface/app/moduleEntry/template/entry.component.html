@@ -1,0 +1,241 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Entry Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <label>Purchase Order</label>
+                        <select id="ListOfPurchaseOrders" class="form-control" [(ngModel)]="SelectedPurchaseOrderID" required>
+                            <option *ngFor="let purchaseOrder of ListOfPurchaseOrders" value={{purchaseOrder.ID}}>
+                                {{purchaseOrder.RequestFrom}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <label>Supplier</label>
+                        <select id="ListOfSuppliers" class="form-control" [(ngModel)]="SelectedSupplierID" required>
+                            <option *ngFor="let supplier of ListOfSuppliers" value={{supplier.ID}}>
+                                {{supplier.Name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Recieved By:</label>
+                            <input type="text" class="form-control" name="RecievedBy" placeholder="Recieved By" [(ngModel)]="entry.RecievedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Recieved Date:</label>
+                            <input type="date" class="form-control" name="RecievedDate" placeholder="Recieved Date" [(ngModel)]="entry.RecievedDate" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Verified By:</label>
+                            <input type="text" class="form-control" name="VerifiedBy" placeholder="Verified By" [(ngModel)]="entry.VerifiedBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Verified Date:</label>
+                            <input type="date" class="form-control" name="VerifiedDate" placeholder="Verified Date" [(ngModel)]="entry.VerifiedDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Reciept Number:</label>
+                            <input type="text" class="form-control" name="RecieptNumber" placeholder="Reciept Number" [(ngModel)]="entry.RecieptNumber" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Deliverer:</label>
+                            <input type="text" class="form-control" name="Deliverer" placeholder="Deliverer" [(ngModel)]="entry.Deliverer" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Supplier Invoice Number:</label>
+                            <input type="text" class="form-control" name="SupplierInvoiceNumber" placeholder="Supplier Invoice Number" [(ngModel)]="entry.SupplierInvoiceNumber" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Delivered By:</label>
+                            <input type="text" class="form-control" name="DeliveredBy" placeholder="Delivered By" [(ngModel)]="entry.DeliveredBy" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Delivered Date:</label>
+                            <input type="date" class="form-control" name="DeliveredDate" placeholder="Delivered Date" [(ngModel)]="entry.DeliveredDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="entry.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateEntry()" translate="Save Entry">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Entry"> Save Entry </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Recieved By</th>
+                            <th>Recieved Date</th>
+                            <th>Remark</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let entry of ListOfEntrys'>
+                            <td>{{entry.RecievedBy}}</td>
+                            <td>{{entry.RecievedDate}}</td>
+                            <td>{{entry.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSingleEntry(entry)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleEntry(entry)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteEntry(entry)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfEntrys || ListOfEntrys.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Entry Detail Information</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <label>Item</label>
+                        <select id="ListOfItems" class="form-control" [(ngModel)]="SelectedItemID" required>
+                            <option *ngFor="let item of ListOfItems" value={{item.ID}}>
+                                {{item.Name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Quantity:</label>
+                            <input type="number" class="form-control" name="Quantity" placeholder="Quantity" [(ngModel)]="entryDetail.Quantity" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Unit Price:</label>
+                            <input type="number" class="form-control" name="UnitPrice" placeholder="Unit Price" [(ngModel)]="entryDetail.UnitPrice" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Total Price:</label>
+                            <input type="number" class="form-control" name="TotalPrice" disabled placeholder="Total Price" [(ngModel)]="entryDetail.Quantity * entryDetail.UnitPrice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" name="Remark" placeholder="Remark" [(ngModel)]="entryDetail.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateEntryDetail()" translate="Save Entry Detail">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Entry Detail"> Save Entry Detail </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let entryDetail of ListOfEntryDetails'>
+                            <td>{{entryDetail.Item.Name}}</td>
+                            <td>{{entryDetail.Quantity}}</td>
+                            <td>{{entryDetail.UnitPrice}}</td>
+                            <td>{{entryDetail.TotalPrice}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleEntryDetail(entryDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteEntryDetail(entryDetail)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Remove" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfEntryDetails || ListOfEntryDetails.length==0">
+                            <td colspan="7">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

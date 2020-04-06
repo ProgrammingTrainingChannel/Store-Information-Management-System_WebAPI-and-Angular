@@ -1,0 +1,77 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title"> Detail Information </h2>
+            </div>
+            <div class="box-body">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Program</th>
+                                <th>Quantity Requested</th>
+                                <th>Quantity Approved</th>
+                                <th>Remark</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let purchaseOrderDetail of ListOfSinglePurchaseOrderDetails'>
+                                <td>{{purchaseOrderDetail.Item.Name}}</td>
+                                <td>{{purchaseOrderDetail.Program}}</td>
+                                <td>{{purchaseOrderDetail.QuantityRequested}}</td>
+                                <td>{{purchaseOrderDetail.QuantityApproved}}</td>
+                                <td>{{purchaseOrderDetail.Remark}}</td>
+                            </tr>
+                            <tr *ngIf="!ListOfSinglePurchaseOrderDetails || ListOfSinglePurchaseOrderDetails.length==0">
+                                <td colspan="8">
+                                    No info. to display
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Purchase Order Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Requested By</th>
+                            <th>Requested Date</th>
+                            <th>No. of Items</th>
+                            <th>Remark</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let purchaseOrder of ListOfPurchaseOrders'>
+                            <td>{{purchaseOrder.RequestedBy}}</td>
+                            <td>{{purchaseOrder.RequestedDate}}</td>
+                            <td>{{CountDetailItem(purchaseOrder.ID)}}</td>
+                            <td>{{purchaseOrder.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSinglePurchaseOrder(purchaseOrder)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfPurchaseOrders || ListOfPurchaseOrders.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

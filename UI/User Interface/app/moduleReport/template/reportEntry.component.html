@@ -1,0 +1,77 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Entry Detail Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let entryDetail of ListOfSingleEntryEntryDetails'>
+                            <td>{{entryDetail.Item.Name}}</td>
+                            <td>{{entryDetail.Quantity}}</td>
+                            <td>{{entryDetail.UnitPrice}}</td>
+                            <td>{{entryDetail.TotalPrice}}</td>
+                        </tr>
+                        <tr *ngIf="!ListOfSingleEntryEntryDetails || ListOfSingleEntryEntryDetails.length==0">
+                            <td colspan="7">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Entry Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Recieved By</th>
+                            <th>Recieved Date</th>
+                            <th>No. of Items</th>
+                            <th>Remark</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let entry of ListOfEntrys'>
+                            <td>{{entry.RecievedBy}}</td>
+                            <td>{{entry.RecievedDate}}</td>
+                            <td>{{CountDetailItem(entry.ID)}}</td>
+                            <td>{{entry.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSingleEntry(entry)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfEntrys || ListOfEntrys.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

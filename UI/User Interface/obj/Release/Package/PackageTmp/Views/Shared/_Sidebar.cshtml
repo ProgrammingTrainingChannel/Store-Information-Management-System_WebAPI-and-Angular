@@ -1,0 +1,74 @@
+﻿@using WebHelpers.Mvc5
+<aside class="main-sidebar">
+    <section class="sidebar">
+        @* BEGIN Search *@
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        @* END Search *@
+        @* BEGIN Menu *@
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="@Url.IsLinkActive("Index", "Home")" style="text-align:center">
+                <i class="fa fa-link"></i>
+                <br/>
+                <span style="color:white;"> Designed and Developed by: <br /> BT IT Solutions <br /> (+251 911 84 20 52)</span>
+            </li>
+
+            <li class="@Url.IsLinkActive("Index", "Home")">
+                <a href="/"><i class="fa fa-link"></i> <span>Home</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Operations</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/purchaseOrder"><i class="fa fa-link"></i><span> Request Management</span></a></li>
+                    <li><a href="/entry"><i class="fa fa-link"></i><span> Entry Management </span></a></li>
+                    <li><a href="/issue"><i class="fa fa-link"></i><span> Issue Management </span></a></li>
+                    <li><a href="/asset"><i class="fa fa-link"></i><span> Asset Management </span></a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/reportRequestList"><i class="fa fa-link"></i><span> Request List </span></a></li>
+                    <li><a href="/reportEntryList"><i class="fa fa-link"></i><span> Entry List </span></a></li>
+                    <li><a href="/reportIssueList"><i class="fa fa-link"></i><span> Issue List </span></a></li>
+                    <li><a href="/reportBinCard"><i class="fa fa-link"></i><span> Bin Card </span></a></li>
+                    <li><a href="/reportItemTransactionComponent"><i class="fa fa-link"></i><span> Item Transaction </span></a></li>
+                    <li><a href="/reportItemListComponent"><i class="fa fa-link"></i><span> Item List </span></a></li>
+                    <li><a href="/reportAssetComponent"><i class="fa fa-link"></i><span> Asset List </span></a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-link"></i> <span>Master Data</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/measurementUnit"><i class="fa fa-link"></i><span> Measurement Unit </span></a></li>
+                    <li><a href="/supplier"><i class="fa fa-link"></i><span> Supplier </span></a></li>
+                    <li><a href="/item"><i class="fa fa-link"></i><span> Item </span></a></li>
+                </ul>
+            </li>
+        </ul>
+        @* END Menu *@
+    </section>
+</aside>

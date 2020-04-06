@@ -1,0 +1,121 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Master Data</h2>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Code:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Code" placeholder="Code" [(ngModel)]="item.Code" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Name" placeholder="Name" [(ngModel)]="item.Name" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Location:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Location" placeholder="Location" [(ngModel)]="item.Location" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Program:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Program" placeholder="Program" [(ngModel)]="item.Program" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Stock Number:</label>
+                            <input type="text" class="form-control" style="width:100%" name="StockNumber" placeholder="Stock Number" [(ngModel)]="item.StockNumber" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-9">
+                        <div class="form-group">
+                            <label>Description:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Description" placeholder="Description" [(ngModel)]="item.Description" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-3">
+                        <label>Measurement Unit</label>
+                        <select id="ListOfMeasurementUnits" class="form-control" [(ngModel)]="SelectedMeasurementUnitID" required>
+                            <option *ngFor="let measurementUnit of ListOfMeasurementUnits" value={{measurementUnit.ID}}>
+                                {{measurementUnit.Name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-3">
+                        <div class="form-group">
+                            <label>Balance Quantity:</label>
+                            <input type="text" class="form-control" style="width:100%" name="BalanceQuantity" placeholder="Balance Quantity" [(ngModel)]="item.BalanceQuantity" />
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label>Remark:</label>
+                            <input type="text" class="form-control" style="width:100%" name="Remark" placeholder="Remark" [(ngModel)]="item.Remark" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="box-tools pull-right">
+                            <button uib-tooltip="Save" type="button" class="col-lg-12 btn btn-primary" (click)="SaveUpdateItem()" translate="Save Item">
+                                <i title="Save" class="glyphicon glyphicon-ok-sign" translate="Save Item"> Save Item </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Measurement Unit</th>
+                            <th>Balance Quantity</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of ListOfItems'>
+                            <td>{{item.Code}}</td>
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Description}}</td>
+                            <td>{{item.MeasurementUnit.Name}}</td>
+                            <td>{{item.BalanceQuantity}}</td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="LoadSingleItem(item)" type="button" class="btn btn-primary btn-xs">
+                                    <i title="Edit" class="glyphicon glyphicon-pencil"></i>
+                                </button>
+                            </td>
+                            <td>
+                                <button uib-tooltip="Save" (click)="DeleteItem()" type="button" class="btn btn-primary btn-xs">
+                                    <i title="Delete" class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfItems || ListOfItems.length==0">
+                            <td colspan="4">
+                                No record to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

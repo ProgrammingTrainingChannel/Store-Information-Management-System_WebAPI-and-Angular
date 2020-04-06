@@ -1,0 +1,83 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Issue Detail Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                            <th>Remark</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let issueDetail of ListOfSingleIssueIssueDetails'>
+                            <td>{{issueDetail.Item.Name}}</td>
+                            <td>{{issueDetail.Quantity}}</td>
+                            <td>{{issueDetail.UnitPrice}}</td>
+                            <td>{{issueDetail.TotalPrice}}</td>
+                            <td>{{issueDetail.Remark}}</td>
+                        </tr>
+                        <tr *ngIf="!ListOfSingleIssueIssueDetails || ListOfSingleIssueIssueDetails.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="box box-default">
+            <div class="box-header">
+                <h2 class="box-title">Issue Information</h2>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Issued By</th>
+                            <th>Issued Date</th>
+                            <th>Recieved By</th>
+                            <th>Recieved Date</th>
+                            <th>No. of Items</th>
+                            <th>Remark</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let issue of ListOfIssues'>
+                            <td>{{issue.IssuedBy}}</td>
+                            <td>{{issue.IssuedDate}}</td>
+                            <td>{{issue.RecievedBy}}</td>
+                            <td>{{issue.RecievedDate}}</td>
+                            <td>{{CountDetailItem(issue.ID)}}</td>
+                            <td>{{issue.Remark}}</td>
+                            <td>
+                                <button uib-tooltip="Select" (click)="SelectSingleIssue(issue)" type="button" style="width:90%" class="btn btn-primary btn-xs">
+                                    <i title="Select" class="glyphicon glyphicon-folder-open"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr *ngIf="!ListOfIssues || ListOfIssues.length==0">
+                            <td colspan="8">
+                                No info. to display
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
